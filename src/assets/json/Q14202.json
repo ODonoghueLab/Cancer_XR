@@ -1,0 +1,10 @@
+{
+  "Shared contacts": {
+    "Source": "Children's Cancer Institute, Sydney, Australia",
+    "URL": "https://test.aquaria.app/P46100?Features=https://odonoghuelab.org/tmp/MVK/P46100.json",
+    "Color": "#F73C3C",
+    "Features": [
+		{"Name": "Lys120Thr", "Residue": 120, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."}
+	]
+  }
+}
