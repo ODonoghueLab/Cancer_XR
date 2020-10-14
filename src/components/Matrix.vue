@@ -1,14 +1,15 @@
 <template>
   <div id="matrix">
-    <h1>{{ msg }}</h1>
+    <MatrixHeader/>
+    <!-- <LoadingPage/> -->
     <div id="container">
-        <div v-for="structure in structures" :key="structure.primary_accession" class="cell"  v-on="structure.primary_accession > 0 ? { click: () => redirect(structure.primary_accession) } : {}">
-          <a v-bind:href="[redirect(structure.link)]" :style="[{'cursor': 'pointer'}]" target="_blank" class='link'>
-          <h3>{{structure.primary_accession}}</h3>
+        <div v-for="structure in structures" :key="structure.Primary_Accession" class="cell"  v-on="structure.Primary_Accession > 0 ? { click: () => redirect(structure.Primary_Accession) } : {}">
+          <a v-bind:href="[redirect(structure.Primary_Accession)]" :style="[{'cursor': 'pointer'}]" target="_blank" class='link'>
+          <h3>{{structure.Synonym}}</h3>
           <picture>
-             <source v-bind:srcset="['../images/covid19/WEBP/' + structure.primary_accession + '.webp 2000w, ../images/covid19/WEBP/' + structure.primary_accession + '_w1000.webp 1000w, ../images/covid19/WEBP/' + structure.primary_accession + '_w500.webp 500w']" type="image/webp" sizes="33vw">
-             <source v-bind:srcset="['../images/covid19/JPEG/' + structure.primary_accession + '.jpg 2000w, ../images/covid19/JPEG/' + structure.primary_accession + '_w1000.jpg 1000w, ../images/covid19/JPEG/' + structure.primary_accession + '_w500.jpg 500w']"  type="image/jpeg" sizes="33vw">
-             <img v-bind:src="['../images/covid19/JPEG/' + structure.primary_accession + '_w1000.jpg']"/>
+             <!-- <source v-bind:srcset="['../images/covid19/WEBP/' + structure + '.webp 2000w, ../images/covid19/WEBP/' + structure + '_w1000.webp 1000w, ../images/covid19/WEBP/' + structure + '_w500.webp 500w']" type="image/webp" sizes="33vw">
+             <source v-bind:srcset="['../images/covid19/JPEG/' + structure + '.jpg 2000w, ../images/covid19/JPEG/' + structure + '_w1000.jpg 1000w, ../images/covid19/JPEG/' + structure + '_w500.jpg 500w']"  type="image/jpeg" sizes="33vw"> -->
+             <img v-bind:src="['../images/screenshots/' + structure.Primary_Accession + '.png']"/>
            </picture>
           <!-- <p :style="[structure.primary_accession == 0 ? {'color': 'grey'} : {'color': '#3a3a3a'}]">{{structure.primary_accession}} matching structures</p> -->
           </a>
@@ -18,39 +19,73 @@
 </template>
 
 <script>
-
+import MatrixHeader from '../components/MatrixHeader'
+import axios from 'axios'
+// import LoadingPage from '../components/LoadingPage'
 export default {
   name: 'Matrix',
+  components: {
+    MatrixHeader
+    // LoadingPage
+  },
   props: {
     msg: String
   },
   data () {
     return{
-      structures: require('../assets/json/example.json')
+      json: require('../assets/json/protein_list.json'),
+      structures: []
     }
   },
   mounted () {
-    console.log(this.json)
+    let proteinSynonyms = []
+    let primary_accessions = this.json.primary_accessions
+    for(var a = 0; a < primary_accessions.length; a ++){
+      let url = 'http://test.aquaria.ws:8010/getProteinSynonyms/' + primary_accessions[a]
+      axios({
+        method: 'get',
+        url: url
+      }).then(response => {
+        let data = response.data
+        proteinSynonyms.push(data)
+      })
+    }
+    this.structures = proteinSynonyms
   },
   methods : {
     redirect: function (redirectLink) {
-      return redirectLink
+      return 'https://test.aquaria.app/' + redirectLink
+    },
+    dynamicSort: function(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
     }
+    return function (a,b) {
+        /* next line works with strings and numbers, 
+         * and you may want to customize it to your needs
+         */
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+}
+   
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 #matrix{
     height: 99vh;
-    background: #c0c0c0 url(/img/Resource-banner.27384505.svg) no-repeat calc(6px + 0.4vw) calc(8px + 0.1vh);
+    background: #c0c0c0 url(../assets/img/icon-large.png) no-repeat calc(6px + 0.4vw) calc(8px + 0.1vh);
     background-size: auto;
-    background-size: calc(115px + 5vw) calc(26px + 2vw);
+    background-size: calc(30px + 2vw) calc(30px + 2vw);
     text-align: center;
 }
 #matrix .cell {
-    font-size: calc(8px + 6 * ((100vw - 320px) / 680));
+    font-size: 10px;
 }
 .cell {
     background-color: #cccccc;
@@ -92,6 +127,12 @@ export default {
   top: 5%;
   z-index: 1;
   font-size: inherit;
+}
+
+@media screen and (min-width: 320px) {
+    #matrix .cell {
+        font-size: calc(8px + 6 * ((100vw - 320px) / 680));
+    }
 }
 h3 {
   margin: 0px;
