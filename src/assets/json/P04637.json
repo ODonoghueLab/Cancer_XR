@@ -1,12 +1,18 @@
 {
   "Shared contacts": {
     "Source": "Children's Cancer Institute, Sydney, Australia",
-    "URL": "https://test.aquaria.app/P46100?Features=https://odonoghuelab.org/tmp/MVK/P46100.json",
+    "URL": "https://test.aquaria.app/P04637?Features=https://odonoghuelab.org/tmp/MVK/P04637.json",
     "Color": "#F73C3C",
     "Features": [
-		{"Name": "Gly13Ala", "Residue": 13, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."},
-		{"Name": "Gln659Arg", "Residue": 659, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."},
-		{"Name": "His1047Leu", "Residue": 1047, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."}
+		{"Name": "His193Tyr", "Residue": 193, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."},
+		{"Name": "Arg273Cys", "Residue": 273, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."},
+		{"Name": "Arg273His", "Residue": 273, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."},
+		{"Name": "Arg273His", "Residue": 273, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."},
+		{"Name": "Arg175His", "Residue": 175, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."},
+		{"Name": "Gly245Val", "Residue": 245, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."},
+		{"Name": "Lys120Thr", "Residue": 120, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."},
+		{"Name": "Ala84ProfsTer", "Residues": [84, 393], "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."},
+		{"Name": "Val31ProfsTer", "Residues": [31, 393], "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."}
 	]
   }
 }

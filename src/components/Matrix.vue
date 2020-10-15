@@ -58,7 +58,8 @@ export default {
       return images('./' + pet + ".png")
     },
     redirect: function (redirectLink) {
-      return 'https://test.aquaria.app/' + redirectLink + '?Features=https://cancer.aquaria.app/json/' + redirectLink + '.json'
+      //return 'https://test.aquaria.app/' + redirectLink + '?Features=https://cancer.aquaria.app/json/' + redirectLink + '.json'
+      return 'https://test.aquaria.app/' + redirectLink + '?Features=http://localhost:8080/json/' + redirectLink + '.json'
     },
     dynamicSort: function(property) {
     var sortOrder = 1;
@@ -67,14 +68,14 @@ export default {
         property = property.substr(1);
     }
     return function (a,b) {
-        /* next line works with strings and numbers, 
+        /* next line works with strings and numbers,
          * and you may want to customize it to your needs
          */
         var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
     }
 }
-   
+
   }
 }
 </script>
