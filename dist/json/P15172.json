@@ -1,0 +1,10 @@
+{
+  "Shared contacts": {
+    "Source": "Children's Cancer Institute, Sydney, Australia",
+    "URL": "https://test.aquaria.app/P15172?Features=https://odonoghuelab.org/tmp/MVK/P15172.json",
+    "Color": "#F73C3C",
+    "Features": [
+		{"Name": "Leu122Arg", "Residue": 122, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."}
+	]
+  }
+}
