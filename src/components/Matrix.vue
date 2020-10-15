@@ -58,7 +58,7 @@ export default {
       return images('./' + pet + ".png")
     },
     redirect: function (redirectLink) {
-      return 'https://test.aquaria.app/' + redirectLink
+      return 'https://test.aquaria.app/' + redirectLink + '?Features=https://odonoghuelab.github.io/Cancer_XR/json/' + redirectLink + '.json'
     },
     dynamicSort: function(property) {
     var sortOrder = 1;
