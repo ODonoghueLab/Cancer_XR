@@ -41,7 +41,7 @@ export default {
     let proteinSynonyms = []
     let primary_accessions = this.json.primary_accessions
     for(var a = 0; a < primary_accessions.length; a ++){
-      let url = 'http://test.aquaria.ws:8010/getProteinSynonyms/' + primary_accessions[a]
+      let url = 'https://test.aquaria.ws:8010/getProteinSynonyms/' + primary_accessions[a]
       axios({
         method: 'get',
         url: url
