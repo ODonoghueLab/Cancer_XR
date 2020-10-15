@@ -58,8 +58,9 @@ export default {
       return images('./' + pet + ".png")
     },
     redirect: function (redirectLink) {
-      //return 'https://test.aquaria.app/' + redirectLink + '?Features=https://cancer.aquaria.app/json/' + redirectLink + '.json'
-      return 'https://test.aquaria.app/' + redirectLink + '?Features=http://localhost:8080/json/' + redirectLink + '.json'
+      return 'https://test.aquaria.app/' + redirectLink + '?Features=https://cancer.aquaria.app/json/' + redirectLink + '.json'
+      //return 'https://test.aquaria.app/' + redirectLink + '?Features=https://odonoghuelab.org/tmp/MVK/' + redirectLink + '.json'
+      //return 'https://test.aquaria.app/' + redirectLink + '?Features=http://localhost:8080/json/' + redirectLink + '.json'
     },
     dynamicSort: function(property) {
     var sortOrder = 1;
