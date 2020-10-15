@@ -2,14 +2,14 @@
     <div id="about_matrix">
         <div id="title_0">
             <a title='Watch the introductory video' v-bind:href="'https://youtu.be/J2nWQTlJNaY'" target="_blank"><img @mouseover="activatePlay(0)" @mouseleave="resetPlay(0)" class='icon' id='play' v-bind:src="play"/></a>
-            <span id="Orgname_0" @mouseover="activateHelp" @mouseleave="resetOver">Proteins implicated in many cancers&nbsp;</span>
+            <span id="Orgname_0" @mouseover="activateHelp" @mouseleave="resetOver">Proteins implicated in youth cancer&nbsp;</span>
              <!-- <a title="Read our bioRxiv preprint" v-bind:href="'https://doi.org/10.1101/2020.07.16.207308'" target="_blank"><img @mouseover="activatePaper(0)" @mouseleave="resetPaper(0)" class='icon' id='paper' v-bind:src="document"/></a> -->
             <img class='icon' id='help' @mouseover="activateOver" @click="showAbout" @mouseleave="resetOver" v-bind:src="info"/>
         </div>
         <div id="content">
             <div id="title">
                 <a title='Watch the introductory video' v-bind:href="'https://youtu.be/J2nWQTlJNaY'" target="_blank"><img @mouseover="activatePlay(1)" @mouseleave="resetPlay(1)" class='icon' id='play' v-bind:src="play"/></a>
-                <span id="Orgname" @mouseover="activateHelp" @mouseleave="resetOver">Proteins implicated in many cancers&nbsp;</span>
+                <span id="Orgname" @mouseover="activateHelp" @mouseleave="resetOver">Proteins implicated in youth cancer&nbsp;</span>
                 <!-- <a title="Read our bioRxiv preprint" v-bind:href="'https://doi.org/10.1101/2020.07.16.207308'" target="_blank"><img @mouseover="activatePaper(1)" @mouseleave="resetPaper(1)" class='icon' id='paper' v-bind:src="document"/></a> -->
                 <img class='icon' id='close' @mouseover="activateClose(1)" @mouseleave="resetClose(1)" @click="hideAbout()" v-bind:src="close"/>
             </div>
