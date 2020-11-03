@@ -1,0 +1,10 @@
+{
+  "Shared contacts": {
+    "Source": "Children's Cancer Institute, Sydney, Australia",
+    "URL": "https://test.aquaria.app/P51532?Features=https://odonoghuelab.org/tmp/MVK/P51532.json",
+    "Color": "#F73C3C",
+    "Features": [
+		{"Name": "Gly883Del", "Residue": 883, "Description": "Somatic single-nucleotide variant occuring in sarcoma patients aged 12-25; likely to have functional impact on tumour."}
+	]
+  }
+}
