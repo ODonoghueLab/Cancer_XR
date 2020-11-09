@@ -47,17 +47,19 @@ export default {
       let feature = this.csv[a]["Feature Name"]
       if(gene in proteinSynonyms){
         proteinSynonyms[gene].Features.push(feature)
+        proteinSynonyms[gene].Description.push(this.csv[a]["Feature Description"])
       }
       else{
         proteinSynonyms[gene] = {}
         proteinSynonyms[gene].Features = []
+        proteinSynonyms[gene].Description = []
         proteinSynonyms[gene].Features.push(feature)
+        proteinSynonyms[gene].Description.push(this.csv[a]["Feature Description"])
       }
       proteinSynonyms[gene].Name = gene
       proteinSynonyms[gene].Primary_Accession = this.csv[a].Accession
       proteinSynonyms[gene].PDB = this.csv[a]["PDB"]
       proteinSynonyms[gene].Chain = this.csv[a]["Chain"]
-      proteinSynonyms[gene].Description = this.csv[a]["Feature Description"]
       proteinSynonyms[gene].Orientation = this.csv[a]["Orientation"]
     }
     proteinSynonyms = this.sortObject(proteinSynonyms)
@@ -91,10 +93,10 @@ export default {
       let Features = redirectLink.Features
       let query = ''
       for(var f = 0; f < Features.length; f++){
-        query = query + '&' + Features[f]
+        query = query + '&' + Features[f] + ((redirectLink.Description[f] == null) ? '' : '=' + redirectLink.Description[f])
       }
       query = query.replace(/^&/, "?");
-      return 'https://test.aquaria.app/' + redirectLink.Primary_Accession + query + ((redirectLink.Orientation == null) ? '' : '#?' + redirectLink.Orientation)
+      return 'https://test.aquaria.app/' + redirectLink.Primary_Accession + ((redirectLink.PDB == null) ? '' : '/' + redirectLink.PDB) + ((redirectLink.Chain == null) ? '' : '/' + redirectLink.Chain) + query + ((redirectLink.Orientation == null) ? '' : '#?' + redirectLink.Orientation)
     },
     dynamicSort: function(property) {
     var sortOrder = 1;
