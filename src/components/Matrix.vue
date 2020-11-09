@@ -41,7 +41,6 @@ export default {
     }
   },
   beforeMount () {
-    this.csv[0].Accession = 'Q'
     var proteinSynonyms = {}
     for(var a = 0; a < this.csv.length; a ++){
       let gene = this.csv[a]["Gene name"]
@@ -61,11 +60,29 @@ export default {
       proteinSynonyms[gene].Description = this.csv[a]["Feature Description"]
       proteinSynonyms[gene].Orientation = this.csv[a]["Orientation"]
     }
+    proteinSynonyms = this.sortObject(proteinSynonyms)
     for(var protein in proteinSynonyms){
       this.structures.push(proteinSynonyms[protein])
     }
   },
   methods : {
+    sortObject: function(o) {
+      var sorted = {},
+      key, a = [];
+
+      for (key in o) {
+        if (Object.prototype.hasOwnProperty.call(o, key)){
+              a.push(key);
+          }
+      }
+
+      a.sort();
+
+      for (key = 0; key < a.length; key++) {
+          sorted[a[key]] = o[a[key]];
+      }
+      return sorted;
+    },
     getImgUrl: function(pet) {
       var images = require.context('../assets/img/screenshots', false, /\.png$/)
       return images('./' + pet + ".png")
