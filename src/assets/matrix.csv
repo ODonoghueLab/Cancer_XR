@@ -1,0 +1,11 @@
+Gene name,Accession,PDB,Chain,Orientation,Feature Name,Feature Description
+ALK,O14686,,,"(-73.95,-8.01,-0.66)&+10.84)",Phe1245Ile,,
+ALK,Q9UM73,,,"(-73.95,-8.01,-0.66)&+10.84)",Tyr1278Ser,
+PIK3CA,P42336,,,,His1047Arg,
+PIK3CA,P42336,,,,Glu545Ala,
+NRAS,P01111,6e6h,,,Gly12Ala,
+BRAF,P15056,4eut,,,Val600Glu,
+BRAF,P15056,4eut,,,Val600Glu,
+PDGFRA,P16234,3v2a,,,Cys235Tyr,
+BRCA2,P51587,,,,Ser1970Ter,
+CHEK2,O96017,,,,Gln20Ter,

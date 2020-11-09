@@ -3,13 +3,13 @@
     <MatrixHeader/>
     <!-- <LoadingPage/> -->
     <div id="container">
-        <div v-for="structure in structures" :key="structure.Primary_Accession" class="cell"  v-on="structure.Primary_Accession > 0 ? { click: () => redirect(structure.Primary_Accession) } : {}">
-          <a v-bind:href="[redirect(structure.Primary_Accession)]" :style="[{'cursor': 'pointer'}]" target="_blank" class='link'>
-          <h3>{{structure.Synonym}}</h3>
+        <div v-for="structure in structures" :key="structure.Primary_Accession" class="cell"  v-on="structure.Primary_Accession > 0 ? { click: () => redirect(structure) } : {}">
+          <a v-bind:href="[redirect(structure)]" :style="[{'cursor': 'pointer'}]" target="_blank" class='link'>
+          <h3>{{structure.Name}}</h3>
           <picture>
              <!-- <source v-bind:srcset="['../images/covid19/WEBP/' + structure + '.webp 2000w, ../images/covid19/WEBP/' + structure + '_w1000.webp 1000w, ../images/covid19/WEBP/' + structure + '_w500.webp 500w']" type="image/webp" sizes="33vw">
              <source v-bind:srcset="['../images/covid19/JPEG/' + structure + '.jpg 2000w, ../images/covid19/JPEG/' + structure + '_w1000.jpg 1000w, ../images/covid19/JPEG/' + structure + '_w500.jpg 500w']"  type="image/jpeg" sizes="33vw"> -->
-             <img :src="getImgUrl(structure.Primary_Accession)" v-bind:alt="structure.Primary_Accession"/>
+             <!-- <img :src="getImgUrl(structure.Primary_Accession)" v-bind:alt="structure.Primary_Accession"/> -->
            </picture>
           <!-- <p :style="[structure.primary_accession == 0 ? {'color': 'grey'} : {'color': '#3a3a3a'}]">{{structure.primary_accession}} matching structures</p> -->
           </a>
@@ -20,8 +20,10 @@
 
 <script>
 import MatrixHeader from '../components/MatrixHeader'
-import axios from 'axios'
+// import axios from 'axios'
 // import LoadingPage from '../components/LoadingPage'
+import csvFile from "../assets/matrix.csv"
+
 export default {
   name: 'Matrix',
   components: {
@@ -33,24 +35,35 @@ export default {
   },
   data () {
     return{
-      json: require('../assets/json/protein_list.json'),
-      structures: []
+      // json: require('../assets/json/protein_list.json'),
+      structures: [],
+      csv: csvFile
     }
   },
-  mounted () {
-    let proteinSynonyms = []
-    let primary_accessions = this.json.primary_accessions
-    for(var a = 0; a < primary_accessions.length; a ++){
-      let url = 'https://odonoghuelab.org:8011/getProteinSynonyms/' + primary_accessions[a]
-      axios({
-        method: 'get',
-        url: url
-      }).then(response => {
-        let data = response.data
-        proteinSynonyms.push(data)
-      })
+  beforeMount () {
+    this.csv[0].Accession = 'Q'
+    var proteinSynonyms = {}
+    for(var a = 0; a < this.csv.length; a ++){
+      let gene = this.csv[a]["Gene name"]
+      let feature = this.csv[a]["Feature Name"]
+      if(gene in proteinSynonyms){
+        proteinSynonyms[gene].Features.push(feature)
+      }
+      else{
+        proteinSynonyms[gene] = {}
+        proteinSynonyms[gene].Features = []
+        proteinSynonyms[gene].Features.push(feature)
+      }
+      proteinSynonyms[gene].Name = gene
+      proteinSynonyms[gene].Primary_Accession = this.csv[a].Accession
+      proteinSynonyms[gene].PDB = this.csv[a]["PDB"]
+      proteinSynonyms[gene].Chain = this.csv[a]["Chain"]
+      proteinSynonyms[gene].Description = this.csv[a]["Feature Description"]
+      proteinSynonyms[gene].Orientation = this.csv[a]["Orientation"]
     }
-    this.structures = proteinSynonyms
+    for(var protein in proteinSynonyms){
+      this.structures.push(proteinSynonyms[protein])
+    }
   },
   methods : {
     getImgUrl: function(pet) {
@@ -58,9 +71,13 @@ export default {
       return images('./' + pet + ".png")
     },
     redirect: function (redirectLink) {
-      return 'https://test.aquaria.app/' + redirectLink + '?Features=https://cancer.aquaria.app/json/' + redirectLink + '.json'
-      //return 'https://test.aquaria.app/' + redirectLink + '?Features=https://odonoghuelab.org/tmp/MVK/' + redirectLink + '.json'
-      //return 'https://test.aquaria.app/' + redirectLink + '?Features=http://localhost:8080/json/' + redirectLink + '.json'
+      let Features = redirectLink.Features
+      let query = ''
+      for(var f = 0; f < Features.length; f++){
+        query = query + '&' + Features[f]
+      }
+      query = query.replace(/^&/, "?");
+      return 'https://test.aquaria.app/' + redirectLink.Primary_Accession + query + ((redirectLink.Orientation == null) ? '' : '#?' + redirectLink.Orientation)
     },
     dynamicSort: function(property) {
     var sortOrder = 1;
@@ -158,4 +175,186 @@ li {
 a {
   color: #42b983;
 }
+
+
+
+v-lazy-image{
+  width: 100vw;
+}
+
+.infoLink{
+    position: absolute;
+    top: 10px;
+    height: 42px;
+    right: 125px;
+}
+
+/* Christian's work */
+ @media screen and (max-width: 549px){
+   #matrix{
+  height: 99vh;
+  background: #c0c0c0 url(../assets/img/AquariaLogo.svg) no-repeat calc(6px + 0.4vw) calc(8px + 0.1vh);
+  background-size: calc(130px + 1.5vw) calc(35px + 1.5vw);
+  text-align: center;
+  }
+}
+/* general layout and colors */
+    body {
+        margin: 0;
+        padding: 0;
+        background: #bbbbbb;
+    }
+    div.no_match h3 {
+        font-weight:400;
+    }
+    .cell {
+        background-color: #cccccc;
+        position: relative;
+        overflow: hidden;
+        /* 'relative' as reference point for absolute positioned elements inside */
+    }
+    /* * * * * CSS grid * * * * */
+    #container {
+        /* display: grid; */
+        grid-gap: 6px;
+        background: #c0c0c0;
+        padding: 6px;
+        height: 90%;
+        margin: 0 auto;
+    }
+    /* Wide aspect ratio */
+    @media screen and (max-aspect-ratio: 15/4) and (min-aspect-ratio: 8/5) {
+        #container {
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            height: 90%;
+        }
+    }
+    @media screen and (max-height: 420px) and (max-aspect-ratio: 15/4) and (min-aspect-ratio: 8/5) {
+      #matrix {
+        height: 88vh;
+      }
+    }
+    @media screen and (orientation:landscape) and (max-width : 1024px){
+        #container {
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            height: 89%;
+        }
+        #about_matrix{
+          margin-bottom: 11px;
+        }
+    }
+
+    /* Tall aspect ratio */
+    @media screen and (max-aspect-ratio: 3/4) {
+        #container {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            height: 88%;
+        }
+    }
+    @media screen and (max-aspect-ratio: 3/4) and (min-height: 1000px) {
+        #container {
+            height: 92%;
+        }
+    }
+/* In-between aspect ratio, put it at the bottom to avoid override*/
+    @media screen and (max-aspect-ratio: 8/5) and (min-aspect-ratio: 3/4) {
+        #container  {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            height: 92%;
+        }
+    }
+        @media screen and (max-aspect-ratio: 8/5) and
+              (min-aspect-ratio: 3/4) and
+              (min-height: 1000px) {
+        #container  {
+            height: 93%;
+        }
+    }
+
+    .cell {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .cell img {
+        max-height: 100%;
+        max-width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    /* TYPOGRAPHY */
+    /* responsive sizes */
+    #matrix .cell {
+        /* font-family: 'Source Sans Pro', sans-serif; */
+        font-size: 10px;
+    }
+    @media screen and (min-width: 320px) {
+        #matrix .cell {
+            font-size: calc(8px + 6 * ((100vw - 320px) / 680));
+        }
+    }
+    /* Alignment */
+    body {
+        text-align: center;
+    }
+    h1, h3, p {
+        margin: 0;
+    }
+    span#count {
+        color:#383838;
+        font-weight: 300;
+        font-size: 60%;
+        margin-left: 20px;
+    }
+    a span#help {
+        display:inline-block;
+        color:#ffffff;
+        background:#0876d6;
+        font-weight: 700;
+        font-size: 80%;
+        border-radius: 50%;
+        margin-left: 20px;
+        width: 1.2em;
+        line-height: 1.2em;
+    }
+    .cell p {
+        position: absolute;
+        width: 100%; /* this, together with 'text-align:center' from body, keeps text centered */
+        bottom: 5%;
+        z-index:1;
+    }
+    .cell h3 {
+        position: absolute;
+        width: 100%;
+        top: 5%;
+        z-index:1;
+        font-size: inherit;
+    }
+
+    /* iframe#slide{
+      height:91.7vh;
+      width: 100%;
+      border: none;
+    } */
+
+    #graph{
+      width: 100vw;
+      position: absolute;
+    }
+
+  .v-lazy-image {
+  filter: blur(10px);
+  transition: filter 1.5s;
+  }
+
+  .v-lazy-image-loaded {
+    filter: blur(0);
+  }
 </style>

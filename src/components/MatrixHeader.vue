@@ -2,7 +2,7 @@
      <div id='header'>
           <div id="logo"></div>
           <AboutMatrix id="about_matrix" v-bind:OrganismName="'COVID-19'" />
-          <img id="menu" v-bind:src="menu" v-if="$mq === 'mobile' || $mq === 'tablet'" v-on:click="showSwitch()"/>
+          <!-- <img id="menu" v-bind:src="menu" v-if="$mq === 'mobile' || $mq === 'tablet'" v-on:click="showSwitch()"/> -->
     </div>
 </template>
 
