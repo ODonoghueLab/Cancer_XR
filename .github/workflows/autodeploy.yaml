@@ -1,4 +1,6 @@
-name: Build and Deploy
+
+name: Deploy Production Client to Github Pages
+
 on:
   push:
     branches:
@@ -15,10 +17,9 @@ jobs:
     env:
       BUILD_OUTPUT_PATH: dist
       PUBLISH_REPO_PATH: publish
-      PUBLISH_REPO: ODonoghueLab/Cancer_XR
+      PUBLISH_REPO: ODonoghueLab/Cancer_XR_Clone
       PUBLISH_BRANCH: gh-pages
       VUE_APP_STATIC_SPA_MODE: true
-      AQUARIA_CLIENT_EMIT_CNAME: cancer.aquaria.app
 
     steps:
     - name: Checkout source repo
@@ -85,4 +86,4 @@ jobs:
         directory: ${{ env.PUBLISH_REPO_PATH }}
         repository: ${{ env.PUBLISH_REPO }}
         branch: ${{ env.PUBLISH_BRANCH }}
-        github_token: ${{ secrets.PUBLISH_ACCESS_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
