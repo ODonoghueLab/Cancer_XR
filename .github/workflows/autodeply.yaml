@@ -93,9 +93,9 @@ jobs:
           
       - name: Deploy to Pages
         if: steps.check_changes.outputs.changed
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: ad-m/github-push-action@v0.6.0
         with:
           directory: ${{ env.PUBLISH_REPO_PATH }}
           repository: ${{ env.PUBLISH_REPO }}
           branch: ${{ env.PUBLISH_BRANCH }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PUBLISH_ACCESS_TOKEN }}
