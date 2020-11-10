@@ -20,6 +20,7 @@ jobs:
       PUBLISH_REPO: ODonoghueLab/Cancer_XR
       PUBLISH_BRANCH: gh-pages
       VUE_APP_STATIC_SPA_MODE: true
+      AQUARIA_CLIENT_EMIT_CNAME: cancer.aquaria.app
 
     steps:
     - name: Checkout source repo
