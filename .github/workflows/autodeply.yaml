@@ -93,7 +93,7 @@ jobs:
           
       - name: Deploy to Pages
         if: steps.check_changes.outputs.changed
-        uses: ad-m/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           directory: ${{ env.PUBLISH_REPO_PATH }}
           repository: ${{ env.PUBLISH_REPO }}
