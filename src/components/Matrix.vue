@@ -9,7 +9,7 @@
           <picture>
              <!-- <source v-bind:srcset="['../images/covid19/WEBP/' + structure + '.webp 2000w, ../images/covid19/WEBP/' + structure + '_w1000.webp 1000w, ../images/covid19/WEBP/' + structure + '_w500.webp 500w']" type="image/webp" sizes="33vw">
              <source v-bind:srcset="['../images/covid19/JPEG/' + structure + '.jpg 2000w, ../images/covid19/JPEG/' + structure + '_w1000.jpg 1000w, ../images/covid19/JPEG/' + structure + '_w500.jpg 500w']"  type="image/jpeg" sizes="33vw"> -->
-             <!-- <img :src="getImgUrl(structure.Primary_Accession)" v-bind:alt="structure.Primary_Accession"/> -->
+             <img :src="getImgUrl(structure.Primary_Accession)" v-bind:alt="structure.Primary_Accession"/>
            </picture>
           <!-- <p :style="[structure.primary_accession == 0 ? {'color': 'grey'} : {'color': '#3a3a3a'}]">{{structure.primary_accession}} matching structures</p> -->
           </a>
