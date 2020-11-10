@@ -2,7 +2,7 @@
     <div id="about_matrix">
         <div id="title_0">
             <a title='Watch the introductory video' v-bind:href="'https://youtu.be/FAQ3yVGYSzY'" target="_blank"><img @mouseover="activatePlay(0)" @mouseleave="resetPlay(0)" class='icon' id='play' v-bind:src="play"/></a>
-            <span id="Orgname_0" @mouseover="activateHelp" @mouseleave="resetOver">Visualizing cancer mechanisms in XR&nbsp;</span>
+            <span id="Orgname_0" @mouseover="activateHelp" @mouseleave="resetOver">Mutations implicated in youth cancer&nbsp;</span>
              <!--<a title="Read Nature Medicine article" v-bind:href="'https://doi.org/10.1038/s41591-020-1072-4'" target="_blank"><img @mouseover="activatePaper(0)" @mouseleave="resetPaper(0)" class='icon' id='paper' v-bind:src="document"/></a>-->
             <img class='icon' id='help' @mouseover="activateOver" @click="showAbout" @mouseleave="resetOver" v-bind:src="info"/>
         </div>
