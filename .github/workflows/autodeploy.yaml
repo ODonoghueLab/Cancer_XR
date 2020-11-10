@@ -17,7 +17,7 @@ jobs:
     env:
       BUILD_OUTPUT_PATH: dist
       PUBLISH_REPO_PATH: publish
-      PUBLISH_REPO: ODonoghueLab/Cancer_XR_Clone
+      PUBLISH_REPO: ODonoghueLab/Cancer_XR
       PUBLISH_BRANCH: gh-pages
       VUE_APP_STATIC_SPA_MODE: true
 
