@@ -90,10 +90,12 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -m "Deploy $GITHUB_SHA"
+          
       - name: Deploy to Pages
         if: steps.check_changes.outputs.changed
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-pages-deploy-action@3.7.1
         with:
           directory: ${{ env.PUBLISH_REPO_PATH }}
           repository: ${{ env.PUBLISH_REPO }}
           branch: ${{ env.PUBLISH_BRANCH }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
