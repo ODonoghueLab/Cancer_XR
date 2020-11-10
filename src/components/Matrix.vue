@@ -59,9 +59,15 @@ export default {
       }
       proteinSynonyms[gene].Name = gene
       proteinSynonyms[gene].Primary_Accession = this.csv[a].Accession
-      proteinSynonyms[gene].PDB = this.csv[a]["PDB"]
-      proteinSynonyms[gene].Chain = this.csv[a]["Chain"]
-      proteinSynonyms[gene].Orientation = this.csv[a]["Orientation"]
+      if(!proteinSynonyms[gene].PDB){
+        proteinSynonyms[gene].PDB = this.csv[a]["PDB"]
+      }
+      if(!proteinSynonyms[gene].Chain){
+        proteinSynonyms[gene].Chain = this.csv[a]["Chain"]
+      }
+      if(!proteinSynonyms[gene].Orientation){
+        proteinSynonyms[gene].Orientation = this.csv[a]["Orientation"]
+      }
     }
     proteinSynonyms = this.sortObject(proteinSynonyms)
     for(var protein in proteinSynonyms){
