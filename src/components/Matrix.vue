@@ -7,8 +7,9 @@
           <a v-bind:href="[redirect(structure)]" :style="[{'cursor': 'pointer'}]" target="_blank" class='link'>
           <h3>{{structure.Name}}</h3>
           <picture>
-             <!-- <source v-bind:srcset="['../images/covid19/WEBP/' + structure + '.webp 2000w, ../images/covid19/WEBP/' + structure + '_w1000.webp 1000w, ../images/covid19/WEBP/' + structure + '_w500.webp 500w']" type="image/webp" sizes="33vw">
-             <source v-bind:srcset="['../images/covid19/JPEG/' + structure + '.jpg 2000w, ../images/covid19/JPEG/' + structure + '_w1000.jpg 1000w, ../images/covid19/JPEG/' + structure + '_w500.jpg 500w']"  type="image/jpeg" sizes="33vw"> -->
+            <!-- <source v-bind:srcset="['./screenshots/WEBP/' + structure.Primary_Accession + '.webp 2000w, ./screenshots/WEBP/' + structure.Primary_Accession + '_w1000.webp 1000w, ./screenshots/WEBP/' + structure.Primary_Accession + '_w500.webp 500w']" type="image/webp" sizes="33vw">
+             <source v-bind:srcset="['./screenshots/JPEG/' + structure.Primary_Accession + '.jpg 2000w, ./screenshots/JPEG/' + structure.Primary_Accession + '_w1000.jpg 1000w, ./screenshots/JPEG/' + structure.Primary_Accession + '_w500.jpg 500w']"  type="image/jpeg" sizes="33vw">
+             <img v-bind:src="['/screenshots/JPEG/3200/' + structure.Primary_Accession + '.jpg']"/> -->
              <img :src="getImgUrl(structure.Primary_Accession)" v-bind:alt="structure.Primary_Accession"/>
            </picture>
           <!-- <p :style="[structure.primary_accession == 0 ? {'color': 'grey'} : {'color': '#3a3a3a'}]">{{structure.primary_accession}} matching structures</p> -->
