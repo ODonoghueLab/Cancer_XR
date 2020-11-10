@@ -39,6 +39,9 @@ export default {
     document.querySelector('div#logo').addEventListener('click', function () {
       that.AboutAquaria()
     })
+    window.addEventListener('resize', function () {
+      document.querySelector('#content').style.width = document.querySelector('#title_0').offsetWidth + 25 + 'px'
+    })
   },
   methods: {
     highlight: function () {
@@ -68,7 +71,7 @@ export default {
           document.querySelector('#about_overlay').style.display = 'none'
           document.querySelector('div.dimmer').remove()
         })
-      } else {
+        } else {
         document.querySelector('div.dimmer').remove()
       }
     }
