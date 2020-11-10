@@ -4,98 +4,25 @@ name: Automate deployment of Github Pages
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+on: [push]
 jobs:
-  # This workflow contains a single job called "build"
   build-and-deploy:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    env:
-      BUILD_OUTPUT_PATH: dist
-      PUBLISH_REPO_PATH: publish
-      PUBLISH_BRANCH: gh-pages
-      VUE_APP_STATIC_SPA_MODE: true
-      # production specific settings
-      CANCER_XR_EMIT_CNAME_PROD: cancer.aquaria.app
-      PUBLISH_REPO_PROD: ODonoghueLab/Cancer_XR
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Configure environment (production)
-        if: github.ref == 'refs/heads/main'
-        run: |
-          echo "::set-env name=CANCER_XR_EMIT_CNAME::$CANCER_XR_EMIT_CNAME_PROD"
-          echo "::set-env name=PUBLISH_REPO::$PUBLISH_REPO_PROD"
-        
-      - name: Checkout source repo
-        uses: actions/checkout@v2
-
-      - name: Checkout publish repo
-        uses: actions/checkout@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
         with:
-          repository: ${{ env.PUBLISH_REPO }}
-          ref: ${{ env.PUBLISH_BRANCH }}
-          path: '${{ env.PUBLISH_REPO_PATH }}'
-          persist-credentials: true # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+          persist-credentials: false
 
-      - name: Clean publish repo
-        working-directory: ${{ env.PUBLISH_REPO_PATH }}
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
-          git rm -rf .
-          git clean -fxd
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
+          npm install
+          npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
-          node-version: '12.x'
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build client
-        run: npm run build
-
-      - name: Copy build
-        run: 'cp -r ${{ env.BUILD_OUTPUT_PATH }}/* ${{ env.PUBLISH_REPO_PATH }}'
-
-      - name: Check for changes
-        working-directory: ${{ env.PUBLISH_REPO_PATH }}
-        run: |
-          git add .
-          git status
-          [[ -z $(git status --porcelain) ]] || echo "::set-output name=changed::true"
-        id: check_changes
-
-      - name: Update publish repo
-        if: steps.check_changes.outputs.changed
-        working-directory: ${{ env.PUBLISH_REPO_PATH }}
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -m "Deploy $GITHUB_SHA"
-          
-      - name: Deploy to Pages
-        if: steps.check_changes.outputs.changed
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          directory: ${{ env.PUBLISH_REPO_PATH }}
-          repository: ${{ env.PUBLISH_REPO }}
-          branch: ${{ env.PUBLISH_BRANCH }}
-          github_token: ${{ secrets.PUBLISH_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: build # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
