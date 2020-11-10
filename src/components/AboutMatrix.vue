@@ -14,21 +14,15 @@
               <img class='icon' id='close' @mouseover="activateClose(1)" @mouseleave="resetClose(1)" @click="hideAbout()" v-bind:src="close"/>
             </div>
             <div>
-            <p>This page shows a collection of mutations found in high-risk cancers in children and young adults (≤ 21 years).</p>
+            <p>This page shows a collection of mutations (indicated with red coloring) found in high-risk cancers in children and young adults (≤ 21 years).</p>
             <p>These mutations have been selected to showcase the use of mixed reality ('XR') devices in cancer research.</p>
-            <p>Clicking on an image gives access an interactive 3D version that can then be explored in 'XR mode' on a range of devices, including iPhone, Android phones, HoloLens, and the Sony Playstation VR.</p>
+            <p>Clicking on an image gives access an interactive 3D version that can be explored in 'XR mode' on a range of devices, including iPhone, Android phones, HoloLens, and the Sony Playstation VR.</p>
             <p>The system has >100 million model structures, covering >500,000 proteins from many species. Each model  can coloured using user-defined features (e.g., SNPs, PTMs), then viewed in XR.</p>
             <p>
             Currently, limitations on specific XR devices mean that large molecular assemblies cannot be shown. However, most XR devices can show average size proteins (~500 amino acids).
             </p>
             <p>To learn more watch the <a href='https://youtu.be/FAQ3yVGYSzY' target='_blank'>introductory video</a> or read the <a href='https://doi.org/10.1038/s41591-020-1072-4' target='_blank'> Nature Medicine article</a> about the mutation dataset.</p>
-            <p id='teams'>
-              <b>The Aquaria-COVID resource </b><i>is hosted by the <a target='_blank' href="https://www.garvan.org.au/">Garvan Institute of Medical Research</a> (Sydney, Australia), and is maintained in collaboration with <a target='_blank' href="https://data61.csiro.au/">CSIRO Data61</a> (Sydney,
-               Australia), the <a target='_blank' href="https://www.unsw.edu.au/"> UNSW</a> (Sydney, Australia), the <a target='_blank' href="https://www.hswt.de/en.html">
-              Weihenstephan-Tr. University of Applied Sciences</a> (Freising, Germany), the <a target='_blank' href="https://www.tum.de/en/">Technical
-              University of Munich</a> (Germany), the <a target='_blank' href="https://www.dundee.ac.uk/">University of Dundee</a> (UK), and the <a target='_blank' href="https://www.ucl.ac.uk/">University College London</a> (UK).
-              </i>
-            </p>
+            <img id='credits' src="../assets/img/Credits.png">
             </div>
         </div>
     </div>
@@ -149,6 +143,9 @@ img#play{
     margin-left: 12px;
     margin-top: calc(7px + 0.55vh);
     margin-bottom: 20px;
+}
+img#credits {
+  width: 92%;
 }
 
 @media only screen
