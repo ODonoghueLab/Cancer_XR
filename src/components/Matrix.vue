@@ -93,8 +93,8 @@ export default {
       return sorted;
     },
     getImgUrl: function(pet) {
-      var images = require.context('../assets/img/screenshots', false, /\.png$/)
-      return images('./' + pet + ".png")
+      var images = require.context('../assets/img/screenshots/JPEG/1000', false, /\.jpg$/)
+      return images('./' + pet + ".jpg")
     },
     redirect: function (redirectLink) {
       let Features = redirectLink.Features
@@ -128,7 +128,7 @@ export default {
 <style>
 #matrix{
     height: 99vh;
-    background: #c0c0c0 url(../assets/img/icon-large.png) no-repeat calc(6px + 0.4vw) calc(8px + 0.1vh);
+    background: #b8b8b8 url(../assets/img/icon-large.png) no-repeat calc(6px + 0.4vw) calc(8px + 0.1vh);
     background-size: auto;
     background-size: calc(30px + 2vw) calc(30px + 2vw);
     text-align: center;
@@ -137,7 +137,7 @@ export default {
     font-size: 10px;
 }
 .cell {
-    background-color: #cccccc;
+    background-color: #c0c0c0;
     position: relative;
     overflow: hidden;
     /* 'relative' as reference point for absolute positioned elements inside */
@@ -146,7 +146,7 @@ export default {
 #container {
     display: grid;
     grid-gap: 6px;
-    background: #c0c0c0;
+    background: #b8b8b8;
     padding: 6px;
     height: 90%;
     margin: 0 auto;
@@ -219,7 +219,7 @@ v-lazy-image{
  @media screen and (max-width: 549px){
    #matrix{
   height: 99vh;
-  background: #c0c0c0 url(../assets/img/AquariaLogo.svg) no-repeat calc(6px + 0.4vw) calc(8px + 0.1vh);
+  background: #b8b8b8 url(../assets/img/AquariaLogo.svg) no-repeat calc(6px + 0.4vw) calc(8px + 0.1vh);
   background-size: calc(130px + 1.5vw) calc(35px + 1.5vw);
   text-align: center;
   }
@@ -228,13 +228,13 @@ v-lazy-image{
     body {
         margin: 0;
         padding: 0;
-        background: #bbbbbb;
+        background: #b8b8b8;
     }
     div.no_match h3 {
         font-weight:400;
     }
     .cell {
-        background-color: #cccccc;
+        background-color: #c0c0c0;
         position: relative;
         overflow: hidden;
         /* 'relative' as reference point for absolute positioned elements inside */
@@ -243,7 +243,7 @@ v-lazy-image{
     #container {
         /* display: grid; */
         grid-gap: 6px;
-        background: #c0c0c0;
+        background: #b8b8b8;
         padding: 6px;
         height: 90%;
         margin: 0 auto;
