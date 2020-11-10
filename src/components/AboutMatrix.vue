@@ -14,7 +14,7 @@
                 <img class='icon' id='close' @mouseover="activateClose(1)" @mouseleave="resetClose(1)" @click="hideAbout()" v-bind:src="close"/>
             </div>
             <div>
-            <p>This page summarizes all available 3D structural information for all proteins comprising the {{ OrganismName }} virus (SARS-CoV-2).
+            <p>This page summarize all available 3D structural information for all proteins comprising the {{ OrganismName }} virus (SARS-CoV-2).
               <!-- (a.k.a. {{ this.synonymsString }} ). -->
             </p>
             <p>
