@@ -97,4 +97,3 @@ jobs:
           directory: ${{ env.PUBLISH_REPO_PATH }}
           repository: ${{ env.PUBLISH_REPO }}
           branch: ${{ env.PUBLISH_BRANCH }}
-          github_token: ${{ secrets.PUBLISH_ACCESS_TOKEN }}
