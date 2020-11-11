@@ -63,7 +63,9 @@ jobs:
       run: npm run build
 
     - name: Copy build
-      run: 'cp -r ${{ env.BUILD_OUTPUT_PATH }}/* ${{ env.PUBLISH_REPO_PATH }}'
+      run: |
+        cp ./CNAME ${{ env.PUBLISH_REPO_PATH }}
+        cp -r ${{ env.BUILD_OUTPUT_PATH }}/* ${{ env.PUBLISH_REPO_PATH }}
 
     - name: Check for changes
       working-directory: ${{ env.PUBLISH_REPO_PATH }}
@@ -88,5 +90,3 @@ jobs:
         repository: ${{ env.PUBLISH_REPO }}
         branch: ${{ env.PUBLISH_BRANCH }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Set custom domain
-      run: echo ${{ env.AQUARIA_CLIENT_EMIT_CNAME }} > CNAME 
