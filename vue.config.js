@@ -1,3 +1,6 @@
+if (process.env.AQUARIA_CLIENT_EMIT_CNAME) {
+  console.log(`Emit CNAME: ${process.env.AQUARIA_CLIENT_EMIT_CNAME}`);
+}
 module.exports = {
   chainWebpack: config => {
     config
