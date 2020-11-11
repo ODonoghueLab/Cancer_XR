@@ -89,4 +89,4 @@ jobs:
         branch: ${{ env.PUBLISH_BRANCH }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Set custom domain
-      run: echo "cancer.aquaria.app" > CNAME 
+      run: echo ${{ env.AQUARIA_CLIENT_EMIT_CNAME }} > CNAME 
