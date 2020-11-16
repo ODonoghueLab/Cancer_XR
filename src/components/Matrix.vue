@@ -4,7 +4,7 @@
     <!-- <LoadingPage/> -->
     <div id="container">
         <div v-for="structure in structures" :key="structure.Primary_Accession" class="cell"  v-on="structure.Primary_Accession > 0 ? { click: () => redirect(structure) } : {}">
-          <a v-bind:href="[redirect(structure)]" :style="[{'cursor': 'pointer'}]" target="_blank" class='link'>
+          <a v-bind:href="[redirect(structure)]" :style="[{'cursor': 'pointer'}]" class='link' target="_blank">
           <h3>{{structure.Name}}</h3>
           <picture>
             <!-- <source v-bind:srcset="['./screenshots/WEBP/' + structure.Primary_Accession + '.webp 2000w, ./screenshots/WEBP/' + structure.Primary_Accession + '_w1000.webp 1000w, ./screenshots/WEBP/' + structure.Primary_Accession + '_w500.webp 500w']" type="image/webp" sizes="33vw">
@@ -63,6 +63,9 @@ export default {
         proteinSynonyms[gene].PDB = this.csv[a]["PDB"]
       }
       if(!proteinSynonyms[gene].Chain){
+        proteinSynonyms[gene].Organism = this.csv[a]["Organism"]
+      }
+      if(!proteinSynonyms[gene].Chain){
         proteinSynonyms[gene].Chain = this.csv[a]["Chain"]
       }
       if(!proteinSynonyms[gene].Orientation){
@@ -103,7 +106,8 @@ export default {
         query = query + '&' + Features[f] + ((redirectLink.Description[f] == null) ? '' : '=' + redirectLink.Description[f])
       }
       query = query.replace(/^&/, "?");
-      return 'https://test.aquaria.app/' + redirectLink.Primary_Accession + ((redirectLink.PDB == null) ? '' : '/' + redirectLink.PDB) + ((redirectLink.Chain == null) ? '' : '/' + redirectLink.Chain) + query + ((redirectLink.Orientation == null) ? '' : '#?' + redirectLink.Orientation)
+      return 'http://localhost:8081/' + redirectLink.Organism + '/' + redirectLink.Name + ((redirectLink.PDB == null) ? '' : '/' + redirectLink.PDB) + ((redirectLink.Chain == null) ? '' : '/' + redirectLink.Chain) + query + ((redirectLink.Orientation == null) ? '' : '#?' + redirectLink.Orientation)
+      //return 'http://localhost:8081/' + redirectLink.Primary_Accession + ((redirectLink.PDB == null) ? '' : '/' + redirectLink.PDB) + ((redirectLink.Chain == null) ? '' : '/' + redirectLink.Chain) + query + ((redirectLink.Orientation == null) ? '' : '#?' + redirectLink.Orientation)
     },
     dynamicSort: function(property) {
     var sortOrder = 1;
