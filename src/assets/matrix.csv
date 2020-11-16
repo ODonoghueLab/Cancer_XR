@@ -1,4 +1,4 @@
-Organism,Gene name,Accession,PDB,Chain,Orientation,Feature Name,Feature Description
+Organism,Gene name,Accession,PDB (optional),Chain (optional),Orientation (optional),Feature Name (optional),Feature Description (optional)
 Human,ACVR1,Q04771,6eix,,"(-6.57,-10.72,-143.68)&+7.89",Arg206His,<br>C5: Pathogenic mutation
 Human,ACVR1,Q04771,,,,Gly328Glu,<br>C5 pathogenic mutation<br>Occurred in four patients<br>Two additional patients had Gly328Val
 Human,ACVR1,Q04771,,,,Gly356Asp,<br>C5: Pathogenic mutation

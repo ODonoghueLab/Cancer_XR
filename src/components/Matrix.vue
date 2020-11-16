@@ -43,33 +43,34 @@ export default {
   },
   beforeMount () {
     var proteinSynonyms = {}
+    const _this = this
     for(var a = 0; a < this.csv.length; a ++){
-      let gene = this.csv[a]["Gene name"]
-      let feature = this.csv[a]["Feature Name"]
+      let gene = _this.matchKey(this.csv[a],"Gene name")
+      let feature = _this.matchKey(this.csv[a],"Feature Name")
       if(gene in proteinSynonyms){
         proteinSynonyms[gene].Features.push(feature)
-        proteinSynonyms[gene].Description.push(this.csv[a]["Feature Description"])
+        proteinSynonyms[gene].Description.push(_this.matchKey(this.csv[a], "Feature Description"))
       }
       else{
         proteinSynonyms[gene] = {}
         proteinSynonyms[gene].Features = []
         proteinSynonyms[gene].Description = []
         proteinSynonyms[gene].Features.push(feature)
-        proteinSynonyms[gene].Description.push(this.csv[a]["Feature Description"])
+        proteinSynonyms[gene].Description.push(_this.matchKey(this.csv[a], "Feature Description"))
       }
       proteinSynonyms[gene].Name = gene
       proteinSynonyms[gene].Primary_Accession = this.csv[a].Accession
       if(!proteinSynonyms[gene].PDB){
-        proteinSynonyms[gene].PDB = this.csv[a]["PDB"]
+        proteinSynonyms[gene].PDB = _this.matchKey(this.csv[a], "PDB")
       }
       if(!proteinSynonyms[gene].Chain){
-        proteinSynonyms[gene].Organism = this.csv[a]["Organism"]
+        proteinSynonyms[gene].Organism = _this.matchKey(this.csv[a], "Organism")
       }
       if(!proteinSynonyms[gene].Chain){
-        proteinSynonyms[gene].Chain = this.csv[a]["Chain"]
+        proteinSynonyms[gene].Chain = _this.matchKey(this.csv[a], "Chain")
       }
       if(!proteinSynonyms[gene].Orientation){
-        proteinSynonyms[gene].Orientation = this.csv[a]["Orientation"]
+        proteinSynonyms[gene].Orientation = _this.matchKey(this.csv[a], "Orientation")
       }
     }
     proteinSynonyms = this.sortObject(proteinSynonyms)
@@ -78,6 +79,13 @@ export default {
     }
   },
   methods : {
+    matchKey: function(objectToSearch, keyToFind) {
+    for (var k in objectToSearch) {
+        if ( k.toLowerCase().indexOf(keyToFind.toLowerCase()) !== -1) 
+            return objectToSearch[k];
+    }
+    return null;
+    },
     sortObject: function(o) {
       var sorted = {},
       key, a = [];
