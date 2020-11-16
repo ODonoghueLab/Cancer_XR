@@ -106,8 +106,8 @@ export default {
         query = query + '&' + Features[f] + ((redirectLink.Description[f] == null) ? '' : '=' + redirectLink.Description[f])
       }
       query = query.replace(/^&/, "?");
-      return 'http://localhost:8081/' + redirectLink.Organism + '/' + redirectLink.Name + ((redirectLink.PDB == null) ? '' : '/' + redirectLink.PDB) + ((redirectLink.Chain == null) ? '' : '/' + redirectLink.Chain) + query + ((redirectLink.Orientation == null) ? '' : '#?' + redirectLink.Orientation)
-      //return 'http://localhost:8081/' + redirectLink.Primary_Accession + ((redirectLink.PDB == null) ? '' : '/' + redirectLink.PDB) + ((redirectLink.Chain == null) ? '' : '/' + redirectLink.Chain) + query + ((redirectLink.Orientation == null) ? '' : '#?' + redirectLink.Orientation)
+      return 'https://test.aquaria.app/' + redirectLink.Organism + '/' + redirectLink.Name + ((redirectLink.PDB == null) ? '' : '/' + redirectLink.PDB) + query + ((redirectLink.Orientation == null) ? '' : '#?' + redirectLink.Orientation)
+      //return 'https://test.aquaria.app/' + redirectLink.Primary_Accession + ((redirectLink.PDB == null) ? '' : '/' + redirectLink.PDB) + ((redirectLink.Chain == null) ? '' : '/' + redirectLink.Chain) + query + ((redirectLink.Orientation == null) ? '' : '#?' + redirectLink.Orientation)
     },
     dynamicSort: function(property) {
     var sortOrder = 1;
