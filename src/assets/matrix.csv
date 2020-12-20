@@ -1,29 +1,29 @@
 Organism,Gene name,Accession,PDB (optional),Chain (optional),Orientation (optional),Feature Name (optional),Feature Description (optional)
-Human,ACVR1,Q04771,6eix,,"(-6.57,-10.72,-143.68)&+7.89",Arg206His,<br>C5: Pathogenic mutation
-Human,ACVR1,Q04771,,,,Gly328Glu,<br>C5 pathogenic mutation<br>Occurred in four patients<br>Two additional patients had Gly328Val
-Human,ACVR1,Q04771,,,,Gly356Asp,<br>C5: Pathogenic mutation
-Human,H3-3A,P84243,4o30,C,"(163.97,-3.24,66.19)&+7.41",Lys28Met,<br>C5: Pathogenic mutation<br>Occurred in 15 patients<br>One additional patient had Lys28Glu
-Human,H3-3A,P84243,,,,Gly35Arg,<br>C5: Pathogenic mutation<br>Occurred in 3 patients
-Human,KMT2D,O14686,4z4p,,"(-139.40,-34.12,43.92)&+7.34",Arg3321Ter,<br>Terminating mutations seen in 5 patients
-Human,NF1,P21359,1nf1,,"(-74.33,-25.10,-146.51)&+8.81",Arg192Ter,<br>C5: Pathogenic mutation
-Human,NRAS,P01111,4q21,,"(97.96,-68.91,126.41)&+5.93",Gly12Asp,<br>C5: Pathogenic mutation<br>Occurred in 3 patients<br>Gly12Ala occurred in 1 patient
-Human,NRAS,P01111,,,,Gln61Arg,<br>C5: Pathogenic mutation<br>Occurred in 3 patients<br>Gln61Lys occurred in 1 patient
-Human,PTEN,P60484,1d5r,,"(129.18,0.87,95.88)&+10.18",Leu70Phe,<br>C4: Likely pathogenic mutation
-Human,PTEN,P60484,,,,Gly251Asp,<br>C4: Likely pathogenic mutation
-Human,SMARCB1,Q12824,5aj1,,"(-177.23,44.70,6.28)&+6.47",Tyr107Ter,<br>C5: Pathogenic mutation
-Human,STAG2,Q8N3U4,5qsu,c,"(-105.53,64.20,0.82)&+13.73",Leu268del,<br>C4: Likely pathogenic mutation
-Human,TP53,P04637,4lo9,,"(130.78,-74.83,149.40)&+7.31",His193Arg,<br>C5: Pathogenic mutation
-Human,TP53,P04637,,,,His193Tyr,<br>C5: Pathogenic mutation
-Human,TP53,P04637,,,,His193Tyr,<br>C5: Pathogenic mutation
-Human,TP53,P04637,,,,Ile255del,<br>C4: Likely pathogenic mutation
-Human,TP53,P04637,,,,Leu265del,<br>C5: Pathogenic mutation
-Human,TP53,P04637,,,,Pro151Thr,<br>C5: Pathogenic mutation
-Human,TP53,P04637,,,,Pro191del,<br>C4: Likely pathogenic mutation
-Human,TP53,P04637,,,,Pro278Ser,<br>C5: Pathogenic mutation
-Human,TP53,P04637,,,,Ser127Cys,<br>C4: Likely pathogenic mutation
-Human,TP53,P04637,,,,Ser241Phe,<br>C4: Likely pathogenic mutation
-Human,TP53,P04637,,,,Thr125Met,<br>C4: Likely pathogenic mutation
-Human,WT1,P19544,2jp9,,"(8.53,5.91,-93.69)&+8.44",Arg370Leu,<br>C5: Pathogenic mutation
+Human,ACVR1,Q04771,6eix,,"(-6.57,-10.72,-143.68)&+7.89",Arg206His,C5: Pathogenic mutation
+Human,ACVR1,Q04771,,,,Gly328Glu,C5 pathogenic mutation<br>Occurred in four patients<br>Two additional patients had Gly328Val
+Human,ACVR1,Q04771,,,,Gly356Asp,C5: Pathogenic mutation
+Human,H3-3A,P84243,4o30,C,"(163.97,-3.24,66.19)&+7.41",Lys28Met,C5: Pathogenic mutation<br>Occurred in 15 patients<br>One additional patient had Lys28Glu
+Human,H3-3A,P84243,,,,Gly35Arg,C5: Pathogenic mutation<br>Occurred in 3 patients
+Human,KMT2D,O14686,4z4p,,"(-139.40,-34.12,43.92)&+7.34",Arg3321Ter,Terminating mutations seen in 5 patients
+Human,NF1,P21359,1nf1,,"(-74.33,-25.10,-146.51)&+8.81",Arg192Ter,C5: Pathogenic mutation
+Human,NRAS,P01111,4q21,,"(97.96,-68.91,126.41)&+5.93",Gly12Asp,C5: Pathogenic mutation<br>Occurred in 3 patients<br>Gly12Ala occurred in 1 patient
+Human,NRAS,P01111,,,,Gln61Arg,C5: Pathogenic mutation<br>Occurred in 3 patients<br>Gln61Lys occurred in 1 patient
+Human,PTEN,P60484,1d5r,,"(129.18,0.87,95.88)&+10.18",Leu70Phe,C4: Likely pathogenic mutation
+Human,PTEN,P60484,,,,Gly251Asp,C4: Likely pathogenic mutation
+Human,SMARCB1,Q12824,5aj1,,"(-177.23,44.70,6.28)&+6.47",Tyr107Ter,C5: Pathogenic mutation
+Human,STAG2,Q8N3U4,5qsu,c,"(-105.53,64.20,0.82)&+13.73",Leu268del,C4: Likely pathogenic mutation
+Human,TP53,P04637,4lo9,,"(130.78,-74.83,149.40)&+7.31",His193Arg,C5: Pathogenic mutation
+Human,TP53,P04637,,,,His193Tyr,C5: Pathogenic mutation
+Human,TP53,P04637,,,,His193Tyr,C5: Pathogenic mutation
+Human,TP53,P04637,,,,Ile255del,C4: Likely pathogenic mutation
+Human,TP53,P04637,,,,Leu265del,C5: Pathogenic mutation
+Human,TP53,P04637,,,,Pro151Thr,C5: Pathogenic mutation
+Human,TP53,P04637,,,,Pro191del,C4: Likely pathogenic mutation
+Human,TP53,P04637,,,,Pro278Ser,C5: Pathogenic mutation
+Human,TP53,P04637,,,,Ser127Cys,C4: Likely pathogenic mutation
+Human,TP53,P04637,,,,Ser241Phe,C4: Likely pathogenic mutation
+Human,TP53,P04637,,,,Thr125Met,C4: Likely pathogenic mutation
+Human,WT1,P19544,2jp9,,"(8.53,5.91,-93.69)&+8.44",Arg370Leu,C5: Pathogenic mutation
 Human,ALK,Q9UM73,4fob,,"(-126.09,-11.03,-58.26)&+7.60",Tyr1278Ser,C5: Pathogenic
 Human,BRAF,P15056,3d4q,,"(-88.83,61.95,-22.59)&+7.86",Val600Glu,C5: Pathogenic
 Human,BRCA2,P51587,1miu,,"(-21.53,3.06,-63.75)&+20.11",Ser1970Ter,C5: Pathogenic
