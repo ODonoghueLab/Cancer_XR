@@ -23,7 +23,7 @@ Human,TP53,P04637,,,,Pro278Ser,C5: Pathogenic mutation
 Human,TP53,P04637,,,,Ser127Cys,C4: Likely pathogenic mutation
 Human,TP53,P04637,,,,Ser241Phe,C4: Likely pathogenic mutation
 Human,TP53,P04637,,,,Thr125Met,C4: Likely pathogenic mutation
-Human,WT1,P19544,1tf6,,"(8.53,5.91,-93.69)&+8.44",Arg394Leu,C5: Pathogenic mutation
+Human,WT1,P19544,1tf6,,"(21,-281,-48)&142%",Arg394Leu,C5: Pathogenic mutation
 Human,ALK,Q9UM73,4fob,,"(-126.09,-11.03,-58.26)&+7.60",Tyr1278Ser,C5: Pathogenic
 Human,BRAF,P15056,3d4q,,"(-88.83,61.95,-22.59)&+7.86",Val600Glu,C5: Pathogenic
 Human,BRCA2,P51587,1miu,,"(-21.53,3.06,-63.75)&+20.11",Ser1970Ter,C5: Pathogenic
