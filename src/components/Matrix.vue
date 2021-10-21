@@ -111,7 +111,7 @@ export default {
       let Features = redirectLink.Features
       let query = ''
       for(var f = 0; f < Features.length; f++){
-        query = query + '&' + Features[f] + ((redirectLink.Description[f] == null) ? '' : '=' + redirectLink.Description[f])
+        query = query + '&' + Features[f] + ((redirectLink.Description[f] == null) ? '' : '.' + redirectLink.Description[f])
       }
       query = query.replace(/^&/, "?");
       return 'https://aquaria.app/' + redirectLink.Organism + '/' + redirectLink.Name + ((redirectLink.PDB == null) ? '' : '/' + redirectLink.PDB) + query + ((redirectLink.Orientation == null) ? '' : '#?' + redirectLink.Orientation)
